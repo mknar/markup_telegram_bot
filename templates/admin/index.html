@@ -1,0 +1,13 @@
+{% extends 'admin/index.html' %}
+
+{% block content %}
+    <p>Total number of objects: <strong>{{ all_objects_count }}</strong></p>
+    <p>Number of labeled: <strong>{{ marked_objects_count }}</strong></p>
+    <p style="margin-bottom: 0">Classes (classifications):</p>
+    {% for c in classifications %}
+        <p style="margin-bottom: 0">- {{ c.title }}: <strong>{{ c.marking_tasks.count }}</strong></p>
+    {% endfor %}
+    <div id="content-main">
+        {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+    </div>
+{% endblock %}

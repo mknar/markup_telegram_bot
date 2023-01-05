@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_DATABASE: markup_tool_db
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - /tmp/app/mysqld:/var/run/mysqld
+  #      - ./db:/var/lib/mysql
+  web:
+    image: mknar/django-app
+    command: bash -c "python ./wait-for-mysql.py && python manage.py migrate && python manage.py init_admin && python manage.py runserver 0.0.0.0:8000 | python manage.py run_telegram_bot"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - .:/markup_telegram_bot
+      - /tmp/app/mysqld:/run/mysqld
