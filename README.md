@@ -1,4 +1,5 @@
 After cloning this repository go to the root directory
+
 For windows, you need to make a file sharing for the project folder. Example:
   add C:\Users\path_to_my_folder to Docker Filesharing. Go to docker dashboard -> settings ->Resources -> FileSharing. Add required folder and hit Apply & Restart.
 
