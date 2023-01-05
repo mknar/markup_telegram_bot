@@ -1,4 +1,8 @@
-After cloning this repository, go to the root directory and run the command։
+After cloning this repository go to the root directory
+For windows, you need to make a file sharing for the project folder. Example:
+  add C:\Users\path_to_my_folder to Docker Filesharing. Go to docker dashboard -> settings ->Resources -> FileSharing. Add required folder and hit Apply & Restart.
+
+In project root run command:
   docker-compose up
   
 After the successful launch of the containers, the admin panel will be available at:
